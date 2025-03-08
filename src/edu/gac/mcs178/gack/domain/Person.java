@@ -122,13 +122,30 @@ public class Person {
 		}
 	}
 	
-	public void give(Scroll scroll) {
-		if (!equals(scroll.getOwner()))
-			Utility.displayMessage(this + " does not have " + scroll);
-		if ((scroll.isOwned()) && (scroll.getOwner().equals(this))) {
-			scroll.beRead();
-		} else {
-			Utility.displayMessage(this + " does not have " + scroll);
+	public void give(Person target, Thing thing) {
+		if (!equals(thing.getOwner()))
+			Utility.displayMessage(this + " does not have " + thing);
+		else {
+			if ((thing.isOwned()) && (thing.getOwner().equals(this))) {
+			Person owner = thing.getOwner();
+			say("I give the " + thing + " to " + target);
+			target.say("Thanks for the " + thing +", " + owner);
+			owner.lose(thing);
+			target.possessions.add(thing);
+			thing.setOwner(target);
+			} 
+			else {
+			Utility.displayMessage(this + " does not have " + thing);
+			}
+		}
+	}
+	
+	public void eat(Chocolate chocolate) {
+		if ((chocolate.isOwned()) && (chocolate.getOwner().equals(this))) {
+			chocolate.beEaten();
+		}
+		else {
+			Utility.displayMessage(this + " does not have " + chocolate);
 		}
 	}
 	

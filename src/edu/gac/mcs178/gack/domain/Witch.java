@@ -27,6 +27,9 @@ public class Witch extends AutoPerson {
 
 	public void curse(Person person) {
 		say("Hah hah hah, I'm going to turn you into a frog, " + person);
+		//List<Thing> targetPossessions = new ArrayList<Thing>(person.getPossessions());
+		//Need to add something to check if target owns thing of type Chocolate
+		//for (Thing thing : targetPossessions) {} 
 		turnIntoFrog(person);
 		say("Hee hee " + person + " looks better in green!");
 	}

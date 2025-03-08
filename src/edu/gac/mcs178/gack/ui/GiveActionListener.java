@@ -89,7 +89,10 @@ class GiveAction extends AbstractAction  {
 	}
 
 	public void actionPerformed(ActionEvent event) {
-		gui.displayMessage("You need to write the code here to have " + player + " give " + item + " to " + recipient);
+		//gui.displayMessage("You need to write the code here to have " + player + " give " + item + " to " + recipient);
+		//Thing item = (Thing) giveJComboBox.getSelectedItem();
+		gui.displayMessage("\n>>> Give" + recipient + item);
+		player.give(recipient, item);
 		gui.playTurn();
 	}
 }
