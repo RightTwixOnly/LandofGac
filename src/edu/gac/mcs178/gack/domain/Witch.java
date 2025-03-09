@@ -26,8 +26,19 @@ public class Witch extends AutoPerson {
 	}
 
 	public void curse(Person person) {
+		if (person instanceof Troll) {
+			return;
+		}
 		say("Hah hah hah, I'm going to turn you into a frog, " + person);
-		//List<Thing> targetPossessions = new ArrayList<Thing>(person.getPossessions());
+		List<Thing> targetPossessions = new ArrayList<Thing>(person.getPossessions());
+		for (Thing thing: targetPossessions) {
+			if (thing instanceof Chocolate) {
+				say("Lucky " + person + ". I smell chocolate on you!");
+				this.take(thing);
+				this.eat((Chocolate) thing);
+				return;
+			}
+		}
 		//Need to add something to check if target owns thing of type Chocolate
 		//for (Thing thing : targetPossessions) {} 
 		turnIntoFrog(person);

@@ -140,12 +140,12 @@ public class Person {
 		}
 	}
 	
-	public void eat(Chocolate chocolate) {
-		if ((chocolate.isOwned()) && (chocolate.getOwner().equals(this))) {
-			chocolate.beEaten();
+	public void eat(Chocolate thing) {
+		if ((thing.isOwned()) && (thing.getOwner().equals(this))) {
+			thing.beEaten();
 		}
 		else {
-			Utility.displayMessage(this + " does not have " + chocolate);
+			Utility.displayMessage(this + " does not have " + thing);
 		}
 	}
 	
